@@ -1,0 +1,49 @@
+<Application x:Class="WpfApplication1.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <LinearGradientBrush x:Key="ButtonBackgroundBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Offset="0">
+                <GradientStop.Color>
+                    <Color A="255" R="250" G="250" B="250" />
+                </GradientStop.Color>
+            </GradientStop>
+            <GradientStop Offset="1">
+                <GradientStop.Color>
+                    <Color A="255" R="70" G="70" B="70" />
+                </GradientStop.Color>
+            </GradientStop>
+        </LinearGradientBrush>
+        
+        <Style x:Key="RoundedButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="ButtonBorder" CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Background="{StaticResource ButtonBackgroundBrush}">
+                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.0" ScaleY="1.0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>                               
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                   
+                </Setter.Value>
+            </Setter>
+            <Setter Property="RenderTransformOrigin" Value="0.1,0.1" />
+        </Style>        
+    </Application.Resources>
+</Application>
